@@ -33,6 +33,6 @@ Les attributs PageDébut et PageFin caractérisent l'association entre Article e
 et la page de fin peuvent varier, pour un même article, lorsqu'il paraît dans plusieurs numéros
 différents.
 
-![Schema](https://github.com/MariamAv/ProjetServeur/blob/master/bdd/schema.png)
+![Schema](/bdd/schema.png)
 
 
