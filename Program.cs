@@ -15,7 +15,7 @@ namespace ProjetServeur
     {
         public static void Main(string[] args)
         {
-            //CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
             //RevuesContext context = new RevuesContext();
 
             /*
