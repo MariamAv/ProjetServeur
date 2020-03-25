@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjetServeur.Domaine
 {
+    //extends : Model si utilise classe générique
     public partial class Auteur
     {
         public Auteur()

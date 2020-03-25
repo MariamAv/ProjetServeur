@@ -26,22 +26,28 @@ namespace ProjetServeur.Repository
 
         public IQueryable<Auteur> FindAll()
         {
-            return this.context.Auteur.Select(auteur => auteur);
+            // SELECT * FROM auteur;
+            return this.context.Auteur;
         }
 
         public Auteur FindById(int id)
         {
-            return this.context.Auteur.Find(id);
+            // SELECT * FROM auteur WHERE Id==id LIMIT 1;
+            return this.context.Auteur
+                .Where(auteur => auteur.Id == id)
+                .First();
         }
 
         public void Remove(int id)
         {
-            Auteur model = this.FindById(id);
-            this.context.Auteur.Remove(model);
+            // DELETE auteur where ID = id;
+            this.context.Remove(this.FindById(id));
+            this.context.SaveChanges();
         }
 
         public Auteur Save(Auteur model)
         {
+            // INSERT INTO auteur (nom, ...) VALUE (..., ..., ...)
             this.context.Add(model);
             this.context.SaveChanges();
             return model;
@@ -49,7 +55,8 @@ namespace ProjetServeur.Repository
 
         public Auteur Update(Auteur model)
         {
-            this.context.Add(model);
+            // UPDATE auteur SET nom=model.nom, prenom=model.prenom WHERE ID = model.id;
+            this.context.Update(model);
             this.context.SaveChanges();
             return model;
         }
