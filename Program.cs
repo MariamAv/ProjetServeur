@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProjetServeur.Domaine;
+using ProjetServeur.Repository;
 
 namespace ProjetServeur
 {
@@ -13,7 +15,15 @@ namespace ProjetServeur
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            //CreateHostBuilder(args).Build().Run();
+            RevuesContext context = new RevuesContext();
+
+            AuteurRepo aRep = new AuteurRepo(context);
+            var auteurs = aRep.FindAll();
+            foreach(var auteur in auteurs)
+            {
+                Console.WriteLine(auteur);
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
