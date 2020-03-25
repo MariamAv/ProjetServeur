@@ -23,25 +23,7 @@ namespace ProjetServeur.Controllers
         [Route("")]
         public IEnumerable<Auteur> FindAll()
         {
-            ICollection<Auteur> auteurs = new List<Auteur>();
-            Auteur a1 = new Auteur()
-            {
-                Id = 0,
-                Nom = "Machin",
-                Prenom = "Truc",
-                Mail = "machin.truc@mail.com"
-            };
-            Auteur a2 = new Auteur()
-            {
-                Id = 1,
-                Nom = "Toto",
-                Prenom = "Titi",
-                Mail = "toto.titi@mail.com"
-            };
-            auteurs.Add(a1);
-            auteurs.Add(a2);
-
-            return auteurs;
+            return this.repo.FindAll();
         }
 
         [HttpGet]
@@ -50,5 +32,21 @@ namespace ProjetServeur.Controllers
         {
             return this.repo.FindById(id);
         }
+
+        [HttpPost]
+        [Route("")]
+        public Auteur Save([FromBody]Auteur a)
+        {
+            return this.repo.Save(a);
+        }
+
+        [HttpPut]
+        [Route("")]
+        public Auteur Update([FromBody]Auteur a)
+        {
+            return this.repo.Update(a);
+        }
+
+
     }
 }

@@ -28,8 +28,8 @@ namespace ProjetServeur
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RevuesContext>(options => options.UseMySql("server=localhost;port=3310;user=root;password=root;database=revues", x => x.ServerVersion("10.4.8-mariadb")));
-            services.AddSingleton<AuteurRepo>();
-            //services.AddSingleton<ArticleRepo>();
+            services.AddTransient<AuteurRepo>();
+            services.AddTransient<ArticleRepo>();
             services.AddControllers();
         }
 
