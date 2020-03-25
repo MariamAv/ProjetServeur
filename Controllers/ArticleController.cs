@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetServeur.Domaine;
+using ProjetServeur.Repository;
 
 namespace ProjetServeur.Controllers
 {
@@ -12,7 +13,14 @@ namespace ProjetServeur.Controllers
     [ApiController]
     public class ArticleController : ControllerBase
     {
-        public ArticleController() { }
+        private ArticleRepo repo;
+        public ArticleController(ArticleRepo repo) 
+        {
+            this.repo = repo;
+        }
+
+        [HttpGet]
+        [Route("")]
         public IEnumerable<Article> FindAll()
         {
             ICollection<Article> articles = new List<Article>();

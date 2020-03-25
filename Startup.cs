@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProjetServeur.Domaine;
+using ProjetServeur.Repository;
 
 namespace ProjetServeur
 {
@@ -24,6 +27,9 @@ namespace ProjetServeur
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<RevuesContext>(options => options.UseMySql("server=localhost;port=3310;user=root;password=root;database=revues", x => x.ServerVersion("10.4.8-mariadb")));
+            services.AddSingleton<AuteurRepo>();
+            //services.AddSingleton<ArticleRepo>();
             services.AddControllers();
         }
 

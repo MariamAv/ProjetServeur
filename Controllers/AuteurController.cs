@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetServeur.Domaine;
+using ProjetServeur.Repository;
 
 namespace ProjetServeur.Controllers
 {
@@ -12,18 +13,27 @@ namespace ProjetServeur.Controllers
     [ApiController]
     public class AuteurController : ControllerBase
     {
-        public AuteurController() { }
+        private AuteurRepo repo;
+        public AuteurController(AuteurRepo repo) 
+        {
+            this.repo = repo;
+        }
+
+        [HttpGet]
+        [Route("")]
         public IEnumerable<Auteur> FindAll()
         {
             ICollection<Auteur> auteurs = new List<Auteur>();
             Auteur a1 = new Auteur()
             {
+                Id = 0,
                 Nom = "Machin",
                 Prenom = "Truc",
                 Mail = "machin.truc@mail.com"
             };
             Auteur a2 = new Auteur()
             {
+                Id = 1,
                 Nom = "Toto",
                 Prenom = "Titi",
                 Mail = "toto.titi@mail.com"
@@ -32,6 +42,13 @@ namespace ProjetServeur.Controllers
             auteurs.Add(a2);
 
             return auteurs;
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public Auteur FindById(int id)
+        {
+            return this.repo.FindById(id);
         }
     }
 }

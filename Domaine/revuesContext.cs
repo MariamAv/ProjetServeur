@@ -27,8 +27,7 @@ namespace ProjetServeur.Domaine
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;port=3310;user=root;password=root;database=revues", x => x.ServerVersion("10.4.8-mariadb"));
+                //optionsBuilder.UseMySql("server=localhost;port=3310;user=root;password=root;database=revues", x => x.ServerVersion("10.4.8-mariadb"));
             }
         }
 
