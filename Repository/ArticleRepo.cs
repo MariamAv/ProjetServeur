@@ -8,34 +8,48 @@ namespace ProjetServeur.Repository
 {
     public class ArticleRepo : CrudRepo<Article>
     {
+        private RevuesContext context;
+
+        public ArticleRepo(RevuesContext context)
+        {
+            this.context = context;
+        }
         public IQueryable<Article> Filter(Article model)
         {
-            throw new NotImplementedException();
+            return this.context.Article.Where(article => article.Id == model.Id
+                                            && article.Titre == model.Titre
+                                            && article.Contenu == model.Contenu
+                                            );
         }
 
         public IQueryable<Article> FindAll()
         {
-            throw new NotImplementedException();
+            return this.context.Article.Select(article => article);
         }
 
         public Article FindById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.Article.Find(id);
         }
 
-        public IQueryable<Article> Remove(int id)
+        public void Remove(int id)
         {
-            throw new NotImplementedException();
+            Article model = this.FindById(id);
+            this.context.Article.Remove(model);
         }
 
         public Article Save(Article model)
         {
-            throw new NotImplementedException();
+            this.context.Add(model);
+            this.context.SaveChanges();
+            return model;
         }
 
         public Article Update(Article model)
         {
-            throw new NotImplementedException();
+            this.context.Add(model);
+            this.context.SaveChanges();
+            return model;
         }
     }
 }

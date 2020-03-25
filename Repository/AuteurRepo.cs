@@ -20,7 +20,8 @@ namespace ProjetServeur.Repository
             return this.context.Auteur.Where(auteur => auteur.Id == model.Id 
                                             && auteur.Nom == model.Nom 
                                             && auteur.Prenom == model.Prenom 
-                                            && auteur.Mail == model.Mail);
+                                            && auteur.Mail == model.Mail
+                                            );
         }
 
         public IQueryable<Auteur> FindAll()

@@ -8,34 +8,49 @@ namespace ProjetServeur.Repository
 {
     public class NumeroRepo : CrudRepo<Numero>
     {
+        private RevuesContext context;
+
+        public NumeroRepo(RevuesContext context)
+        {
+            this.context = context;
+        }
         public IQueryable<Numero> Filter(Numero model)
         {
-            throw new NotImplementedException();
+            return this.context.Numero.Where(numero => numero.Id == model.Id
+                                            && numero.Nombre == model.Nombre
+                                            && numero.Annee == model.Annee
+                                            && numero.Nbpages == model.Nbpages
+                                            );
         }
 
         public IQueryable<Numero> FindAll()
         {
-            throw new NotImplementedException();
+            return this.context.Numero.Select(numero => numero);
         }
 
         public Numero FindById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.Numero.Find(id);
         }
 
-        public IQueryable<Numero> Remove(int id)
+        public void Remove(int id)
         {
-            throw new NotImplementedException();
+            Numero model = this.FindById(id);
+            this.context.Numero.Remove(model);
         }
 
         public Numero Save(Numero model)
         {
-            throw new NotImplementedException();
+            this.context.Add(model);
+            this.context.SaveChanges();
+            return model;
         }
 
         public Numero Update(Numero model)
         {
-            throw new NotImplementedException();
+            this.context.Add(model);
+            this.context.SaveChanges();
+            return model;
         }
     }
 }
