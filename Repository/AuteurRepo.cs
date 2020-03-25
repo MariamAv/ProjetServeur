@@ -36,6 +36,7 @@ namespace ProjetServeur.Repository
             return this.context.Auteur
                 .Where(auteur => auteur.Id == id)
                 .First();
+
         }
 
         public void Remove(int id)

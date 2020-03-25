@@ -23,21 +23,28 @@ namespace ProjetServeur.Controllers
         [Route("")]
         public IEnumerable<Article> FindAll()
         {
-            ICollection<Article> articles = new List<Article>();
-            Article a1 = new Article()
-            {
-                Titre = "titre1",
-                Contenu = "bla bla bla",
-            };
-            Article a2 = new Article()
-            {
-                Titre = "titre2",
-                Contenu = "bla bla bla bla",
-            };
-            articles.Add(a1);
-            articles.Add(a2);
+            return this.repo.FindAll();
+        }
 
-            return articles;
+        [HttpGet]
+        [Route("{id}")]
+        public Article FindById(int id)
+        {
+            return this.repo.FindById(id);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public Article Save([FromBody]Article a)
+        {
+            return this.repo.Save(a);
+        }
+
+        [HttpPut]
+        [Route("")]
+        public Article Update([FromBody]Article a)
+        {
+            return this.repo.Update(a);
         }
     }
 }
