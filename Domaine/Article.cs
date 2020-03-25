@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjetServeur.Domaine
 {
-    //extends : Model si utilise classe générique
-    public partial class Article
+    public partial class Article : Model
     {
         public Article()
         {
@@ -13,7 +12,7 @@ namespace ProjetServeur.Domaine
             InverseArticleNavigation = new HashSet<Article>();
         }
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Titre { get; set; }
         public string Contenu { get; set; }
         public int? ArticleId { get; set; }

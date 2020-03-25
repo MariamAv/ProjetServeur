@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjetServeur.Domaine
 {
-    //extends : Model si utilise classe générique
-    public partial class Numero
+    public partial class Numero : Model
     {
         public Numero()
         {
@@ -16,7 +15,7 @@ namespace ProjetServeur.Domaine
         public int Annee { get; set; }
         public int? Nbpages { get; set; }
         public int RevueId { get; set; }
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public virtual Revue Revue { get; set; }
         public virtual ICollection<Contient> Contient { get; set; }

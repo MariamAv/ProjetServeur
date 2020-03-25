@@ -16,15 +16,16 @@ namespace ProjetServeur
         public static void Main(string[] args)
         {
             //CreateHostBuilder(args).Build().Run();
-            RevuesContext context = new RevuesContext();
+            //RevuesContext context = new RevuesContext();
 
-            
+            /*
             AuteurRepo aRep = new AuteurRepo(context);
             var auteurs = aRep.FindAll();
             foreach(var auteur in auteurs)
             {
                 Console.WriteLine(auteur);
             }
+            */
             
             /*
             CrudRepo<Auteur> crudAuteur = new CrudSQLRepo<Auteur>(context);

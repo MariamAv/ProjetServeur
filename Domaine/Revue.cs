@@ -3,15 +3,14 @@ using System.Collections.Generic;
 
 namespace ProjetServeur.Domaine
 {
-    //extends : Model si utilise classe générique
-    public partial class Revue
+    public partial class Revue : Model
     {
         public Revue()
         {
             Numero = new HashSet<Numero>();
         }
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Nom { get; set; }
         public string Periodicite { get; set; }
 
